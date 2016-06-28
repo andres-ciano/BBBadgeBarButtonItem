@@ -54,6 +54,8 @@
     self.badge.textColor        = self.badgeTextColor;
     self.badge.backgroundColor  = self.badgeBGColor;
     self.badge.font             = self.badgeFont;
+    self.badge.layer.borderColor    = self.badgeBorderColor.CGColor;
+    self.badge.layer.borderWidth    = self.badgeBorderWidth;
 }
 
 - (void)updateBadgeFrame
@@ -142,7 +144,9 @@
         self.badge.backgroundColor      = self.badgeBGColor;
         self.badge.font                 = self.badgeFont;
         self.badge.textAlignment        = NSTextAlignmentCenter;
-
+        self.badge.layer.borderColor    = self.badgeBorderColor.CGColor;
+        self.badge.layer.borderWidth    = self.badgeBorderWidth;
+        
         [self.customView addSubview:self.badge];
         [self updateBadgeValueAnimated:NO];
     } else {
@@ -163,6 +167,24 @@
 {
     _badgeTextColor = badgeTextColor;
 
+    if (self.badge) {
+        [self refreshBadge];
+    }
+}
+
+- (void)setBadgeBorderColor:(UIColor *)badgeBorderColor
+{
+    _badgeBorderColor = badgeBorderColor;
+    
+    if (self.badge) {
+        [self refreshBadge];
+    }
+}
+
+- (void)setBadgeBorderWidth:(CGFloat)badgeBorderWidth
+{
+    _badgeBorderWidth = badgeBorderWidth;
+    
     if (self.badge) {
         [self refreshBadge];
     }
