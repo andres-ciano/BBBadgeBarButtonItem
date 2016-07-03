@@ -90,9 +90,9 @@
     // Bounce animation on badge if value changed and if animation authorized
     if (animated && self.shouldAnimateBadge && ![self.badge.text isEqualToString:self.badgeValue]) {
         CABasicAnimation * animation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-        [animation setFromValue:[NSNumber numberWithFloat:1.5]];
+        [animation setFromValue:[NSNumber numberWithFloat:4]];
         [animation setToValue:[NSNumber numberWithFloat:1]];
-        [animation setDuration:0.2];
+        [animation setDuration:1.0];
         [animation setTimingFunction:[CAMediaTimingFunction functionWithControlPoints:.4 :1.3 :1 :1]];
         [self.badge.layer addAnimation:animation forKey:@"bounceAnimation"];
     }
